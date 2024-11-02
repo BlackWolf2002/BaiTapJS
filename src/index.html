@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./output.css" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="flex m-20">
+        <form class="bt1 shadow-xl bg-slate-300 block rounded-2xl">
+            <h1 class="justify-self-center font-[700px] text-[25px]">Quản lý tuyển sinh</h1>
+            <div class="m-10 space-x-8">
+                <input type="number" placeholder="Điểm chuẩn" class="h-[30px] w-[200px] shadow-inner rounded-lg placeholder:italic placeholder:text-slate-400 pl-3" id="diemChuan">
+                
+                <select name="" id="khuVuc" class="h-[30px] w-[200px] shadow-inner rounded-lg">
+                    <option value="0">Chọn khu vực</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                </select>
+
+                <select name="" id="doiTuong" class="h-[30px] w-[200px] shadow-inner rounded-lg">
+                    <option value="0">Chọn đối tượng</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+
+            <div class="m-10 space-x-8">
+                <input type="number" placeholder="Điểm môn thứ 1" class="h-[30px] w-[200px] shadow-inner rounded-lg placeholder:italic placeholder:text-slate-400 pl-3" id="diemMon1">
+                <input type="number" placeholder="Điểm môn thứ 2" class="h-[30px] w-[200px] shadow-inner rounded-lg placeholder:italic placeholder:text-slate-400 pl-3" id="diemMon2">
+                <input type="number" placeholder="Điểm môn thứ 3" class="h-[30px] w-[200px] shadow-inner rounded-lg placeholder:italic placeholder:text-slate-400 pl-3" id="diemMon3">
+            </div>
+
+            <button  type="button" class="mx-[50px] border-blue-500 rounded-full border p-2 w-[100px] bg-blue-500 text-white" onclick="tinhKetQua(event)">Kết quả</button>
+            <div class="mx-[20px] my-5 border-green-300 border bg-green-300 w-[700px] h-[40px]">
+                <p id="content" class="m-1 italic font-[400px]"></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="flex m-20">
+        <form class="bt1 shadow-xl bg-slate-300 block rounded-2xl">
+            <h1 class="justify-self-center font-[700px] text-[25px]">Tính tiền điện</h1>
+            <div class="m-10 space-x-8">
+                <input type="text" placeholder="Nhập họ tên" class="h-[30px] w-[200px] shadow-inner rounded-lg placeholder:italic placeholder:text-slate-400 pl-3" id="hoTen">
+                <input type="number" placeholder="Nhập số Kw" class="h-[30px] w-[200px] shadow-inner rounded-lg placeholder:italic placeholder:text-slate-400 pl-3" id="soKw">
+            </div>
+    
+            <button  type="button" class="mx-[50px] border-blue-500 rounded-full border p-2 bg-blue-500 text-white w-[150px]" onclick="tinhTienDien(event)">Tính tiền điện</button>
+            <div class="mx-[20px] my-5 border-green-300 border bg-green-300 w-[700px] h-[40px]">
+                <p id="result" class="m-1 italic font-[400px]"></p>
+            </div>
+        </form> 
+    </div>
+
+    <div class="flex m-20">
+        <form class="bt1 shadow-xl bg-slate-300 block rounded-2xl">
+            <h1 class="justify-self-center font-[700px] text-[25px]">Tính tiền thuế</h1>
+            <div class="m-10 space-x-8">
+                <input type="text" placeholder="Nhập họ tên" class="h-[30px] w-[200px] shadow-inner rounded-lg placeholder:italic placeholder:text-slate-400 pl-3" id="ten">
+                <input type="number" placeholder="Tổng thu nhập năm" class="h-[30px] w-[200px] shadow-inner rounded-lg placeholder:italic placeholder:text-slate-400 pl-3" id="thuNhap">
+                <input type="number" placeholder="Số người phụ thuộc" class="h-[30px] w-[200px] shadow-inner rounded-lg placeholder:italic placeholder:text-slate-400 pl-3" id="nguoiPhuThuoc">
+            </div>
+    
+            <button  type="button" class="mx-[50px] border-blue-500 rounded-full border p-2 bg-blue-500 text-white w-[150px]" onclick="tinhTienThue(event)">Tính tiền thuế</button>
+            <div class="mx-[20px] my-5 border-green-300 border bg-green-300 w-[700px] h-[40px]">
+                <p id="result2" class="m-1 italic font-[400px]"></p>
+            </div>
+        </form> 
+    </div>
+
+    <div class="flex m-20">
+        <form class="bt1 shadow-xl bg-slate-300 block rounded-2xl">
+            <h1 class="justify-self-center font-[700px] text-[25px]">Tính tiền cáp</h1>
+            <div class="m-10 block">
+                <div>
+                    <select
+                        id="loaiKhachHang"
+                        class="h-[30px] w-[200px] shadow-inner rounded-lg"
+                        onchange="toggleConnections()"
+                    >
+                        <option value="vuiLongChon">Chọn loại khách hàng</option>
+                        <option value="residential">Nhà Dân</option>
+                        <option value="business">Doanh Nghiệp</option>
+                    </select>
+                    <input type="text" placeholder="Mã khách hàng" class="h-[30px] w-[200px] shadow-inner rounded-lg placeholder:italic placeholder:text-slate-400 pl-3" id="maKhachHang"> 
+                    <input type="number" placeholder="Số kênh cao cấp" class="h-[30px] w-[200px] shadow-inner rounded-lg placeholder:italic placeholder:text-slate-400 pl-3" id="soKenh">
+                </div>
+                <div id="soKetNoiContainer" style="display: none;">
+                    <input type="number" placeholder="Số kết nối" class="h-[30px] w-[200px] shadow-inner rounded-lg placeholder:italic placeholder:text-slate-400 mt-10" id="soKetNoi">
+                </div>   
+            </div>
+    
+            <button  type="button" class="mx-[50px] border-blue-500 rounded-full border p-2 bg-blue-500 text-white w-[150px]" onclick="tinhHoaDon(event)">Tính tiền thuế</button>
+            <div class="mx-[20px] my-5 border-green-300 border bg-green-300 w-[700px] h-[40px]">
+                <p id="result3" class="m-1 italic font-[400px]"></p>
+            </div>
+        </form> 
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+</html>
